@@ -13,5 +13,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # ホストの"."フォルダをコンテナ内の"/app"にコピー
 COPY . /app
 
+# jupyter lab用のポート
+EXPOSE 8888
+
 # コンテナ起動時に実行するコマンド
-CMD ["python"]
+# Jupyter Lab を起動
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
